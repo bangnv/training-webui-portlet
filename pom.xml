@@ -1,0 +1,28 @@
+<project>
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gatein.example</groupId>
+  <artifactId>org.gatein.example.portlet.webui</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <name>demo.portlet.webui</name>
+  <description>Demo Portlet webui</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.exoplatform.portal</groupId>
+      <artifactId>exo.portal.webui.portal</artifactId>
+     <version>3.4.0.M01</version>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+            <groupId>org.exoplatform.portal</groupId>
+            <artifactId>exo.portal.webui.eXo</artifactId>
+            <!-- version>${org.exoplatform.portal.version}</version -->
+            <version>3.4.0.M01</version>
+            <scope>provided</scope>
+        </dependency>
+ </dependencies>
+  <build>
+    <finalName>demo_portlet_webui</finalName>
+  </build>
+</project>
