@@ -17,4 +17,5 @@
 		<servlet-name>PortletWrapper</servlet-name>
 		<url-pattern>/PortletWrapper</url-pattern>
 	</servlet-mapping>
+
 </web-app>

@@ -15,15 +15,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.gatein.example.portlet.demo;
-
+import org.exoplatform.webui.commons.UIDocumentSelector;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
-import org.exoplatform.webui.core.UIPopupWindow;
 import org.exoplatform.webui.core.UIPortletApplication;
 import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
-import org.gatein.example.portlet.component.UIHelloWorldPopupContent;
 
 /**
  * Created by The eXo Platform SAS Author : Nguyen Viet Bang
@@ -31,26 +29,29 @@ import org.gatein.example.portlet.component.UIHelloWorldPopupContent;
  */
 @ComponentConfig(lifecycle = UIApplicationLifecycle.class, template = "app:/groovy/portlet/UIDemoPortlet.gtmpl", events = { @EventConfig(listeners = UIDemoPortlet.OpenPopupActionListener.class) })
 public class UIDemoPortlet extends UIPortletApplication {
+	protected static final String UIDOCUMENTSELECTOR = "UIDocumentSelector";
 
-  public UIDemoPortlet() throws Exception {
-    UIPopupWindow popup = addChild(UIPopupWindow.class, null, null);
-    popup.setWindowSize(400, 300);
+	public UIDemoPortlet() throws Exception {
+		UIDocumentSelector documentSelector = addChild(
+				UIDocumentSelector.class, null, UIDOCUMENTSELECTOR);
+		documentSelector.setShowUpload(true);
+	}
 
-    UIHelloWorldPopupContent popupContent = createUIComponent(UIHelloWorldPopupContent.class,
-                                                              null,
-                                                              null);
-    popup.setUIComponent(popupContent);
-    popup.setRendered(false);
-  }
+	static public class OpenPopupActionListener extends
+			EventListener<UIDemoPortlet> {
 
-  static public class OpenPopupActionListener extends EventListener<UIDemoPortlet> {
-    public void execute(Event<UIDemoPortlet> event) throws Exception {
-      UIDemoPortlet portlet = event.getSource();
-      UIPopupWindow popup = portlet.getChild(UIPopupWindow.class);
-      popup.setRendered(true);
-      popup.setShow(true);
-//      popup.set
-    }
-  }
+		@Override
+		public void execute(Event<UIDemoPortlet> event) throws Exception {
+			// TODO Auto-generated method stub
+
+		}
+		// public void execute(Event<UIDemoPortlet> event) throws Exception {
+		// UIDemoPortlet portlet = event.getSource();
+		// UIPopupWindow popup = portlet.getChild(UIPopupWindow.class);
+		// popup.setRendered(true);
+		// popup.setShow(true);
+		// // popup.set
+		// }
+	}
 
 }
